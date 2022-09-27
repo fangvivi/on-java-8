@@ -1,4 +1,4 @@
-package com.wayne.concurrentcy.lock;
+package com.wayne.concurrent.lock;
 
 import lombok.extern.slf4j.Slf4j;
 

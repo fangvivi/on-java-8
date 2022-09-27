@@ -1,4 +1,4 @@
-package com.wayne.concurrentcy.sync;
+package com.wayne.concurrent.sync;
 
 import lombok.extern.slf4j.Slf4j;
 

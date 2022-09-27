@@ -1,12 +1,12 @@
-package com.wayne.concurrentcy.sync;
+package com.wayne.concurrent.sync;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 线程通讯
+ * 使用 synchronized 实现线程通讯
  * @author wayne
  */
-public class ThreadCommunicate {
+public class ThreadCommunicateSync {
     public static void main(String[] args) {
         Share share = new Share();
         new Thread(()->{
@@ -54,6 +54,8 @@ public class ThreadCommunicate {
 class Share {
     private int val = 0;
     public synchronized void incr() throws InterruptedException {
+        // 此处存在虚假唤醒的问题，所以需要用循环
+        // wait 被唤醒会继续执行，如果不重新判断条件就可能出现问题
         while(val != 0){
             this.wait();
         }
@@ -63,11 +65,14 @@ class Share {
     }
 
     public synchronized void decr() throws InterruptedException {
+        // 判断
         while(val != 1){
             this.wait();
         }
+        // 干活
         val--;
         log.info("Thread name:{}, val:{}", Thread.currentThread().getName(), val);
+        // 通知
         this.notifyAll();
     }
 }
