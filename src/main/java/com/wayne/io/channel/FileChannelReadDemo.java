@@ -17,7 +17,7 @@ public class FileChannelReadDemo {
         RandomAccessFile raf = new RandomAccessFile("src/main/resources/a.txt","rw");
         final FileChannel channel = raf.getChannel();
         // 创建buffer
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(20);
         // 读取数据到buffer中
         int readBytes = channel.read(buffer);
         while (readBytes != -1){
