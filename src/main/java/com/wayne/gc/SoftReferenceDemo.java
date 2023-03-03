@@ -10,9 +10,8 @@ import java.lang.ref.SoftReference;
  */
 public class SoftReferenceDemo {
     public static void main(String[] args) {
-        // 创建一个10m的软引用对象
-        final byte[] soft = new byte[1024 * 1024 * 10];
-        SoftReference<byte[]> softReference = new SoftReference<>(soft);
+        // 创建一个占内存10m的软引用对象
+        SoftReference<byte[]> softReference = new SoftReference<>(new byte[1024 * 1024 * 10]);
         System.out.println(softReference.get());
         System.gc();
         System.out.println(softReference.get());

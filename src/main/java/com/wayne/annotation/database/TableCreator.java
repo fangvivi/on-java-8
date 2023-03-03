@@ -90,7 +90,7 @@ public class TableCreator {
             }
             StringBuilder createTableCommand = new StringBuilder("CREATE TABLE "+tableName+" ( ");
             for (String s : columnList) {
-                createTableCommand.append("\n "+s+",");
+                createTableCommand.append("\n ").append(s).append(",");
             }
             String sql = createTableCommand.substring(0, createTableCommand.length() - 1) + ");";
             log.info("为类[{}]创建数据库表的SQL语句为：\n{}",classname, sql);
