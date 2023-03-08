@@ -16,16 +16,16 @@ import java.util.concurrent.TimeUnit;
 public class CustomThreadPoolDemo {
     public static void main(String[] args) {
         ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
+                2,
                 5,
-                10,
                 5L, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(3),
+                new ArrayBlockingQueue<>(1),
                 Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.AbortPolicy()
+                new ThreadPoolExecutor.CallerRunsPolicy()
         );
 
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 30; i++) {
                 threadPool.execute(()->{
                     log.info("【{}】", Thread.currentThread().getName());
                 });
