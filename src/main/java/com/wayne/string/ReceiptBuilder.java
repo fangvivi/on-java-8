@@ -7,11 +7,13 @@ import java.util.Formatter;
  */
 public class ReceiptBuilder {
     private double total = 0;
-    private Formatter f = new Formatter(new StringBuilder());
+    private final Formatter f = new Formatter(new StringBuilder());
+
+    private static final String FORMAT_TITLE = "%-15s %5s %10s%n";
 
     public ReceiptBuilder(){
-        f.format("%-15s %5s %10s%n", "Item","Qty","Price");
-        f.format("%-15s %5s %10s%n","----","---","-----");
+        f.format(FORMAT_TITLE, "Item","Qty","Price");
+        f.format(FORMAT_TITLE,"----","---","-----");
     }
     public void add(String name, int quantity, double price){
         f.format("%-15.6s %5d %10.2f%n",name, quantity, price);
@@ -20,7 +22,7 @@ public class ReceiptBuilder {
 
     public String build(){
         f.format("%-15s %5s %10.2f%n","Tax", "", total*0.06);
-        f.format("%-15s %5s %10s%n","","","-----");
+        f.format(FORMAT_TITLE,"","","-----");
         f.format("%-15s %5s %10.2f%n","Total", "", total*1.06);
         return f.toString();
     }

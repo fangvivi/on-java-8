@@ -1,14 +1,13 @@
 package com.wayne.string;
 
-import java.io.PrintStream;
 import java.util.Formatter;
 
 /**
  * @author wayne
  */
 public class Turtle {
-    private String name;
-    private Formatter f;
+    private final String name;
+    private final Formatter f;
 
     public Turtle(String name, Formatter f) {
         this.name = name;

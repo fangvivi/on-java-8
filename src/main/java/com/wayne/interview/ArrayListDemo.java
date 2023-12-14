@@ -5,8 +5,10 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
+ * list删除元素的方法
  * @author waine
  * @date 2023-03-08 14:57
  */
@@ -19,7 +21,7 @@ public class ArrayListDemo {
     }
 
     public static void delete() {
-        // 使用循环的方式正序便利删除元素，如果出现连续重复的元素，会漏掉要删除元素
+        // 使用循环的方式正序遍历删除元素，如果出现连续重复的元素，会漏掉要删除元素
         ArrayList<String> list = new ArrayList<>();
         list.add("a");
         list.add("bb");
@@ -27,7 +29,7 @@ public class ArrayListDemo {
         list.add("ccc");
         list.add("ccc");
         list.add("ccc");
-        incorrectRemove2(list);
+        correctDelete(list);
         for (String s : list) {
             logger.info("element[{}]", s);
         }
@@ -61,7 +63,7 @@ public class ArrayListDemo {
         }
     }
 
-    public void correctDelete(ArrayList<String> list){
+    public static void correctDelete(List<String> list){
         list.removeIf("bb"::equals);
     }
 
