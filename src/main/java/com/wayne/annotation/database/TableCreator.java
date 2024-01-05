@@ -44,7 +44,7 @@ public class TableCreator {
             }
             String tableName = dbTable.name();
             // 如果注解的元素值是空的，使用类的名字来作为表名
-            if(tableName.length() < 1){
+            if(tableName.isEmpty()){
                 tableName = cl.getName().toUpperCase();
             }
             List<String> columnList = new ArrayList<>();
@@ -64,7 +64,7 @@ public class TableCreator {
                     String columnName = "";
                     SQLInteger sInt = (SQLInteger) ann[0];
                     // 如果注解没有指定表的字段名，就使用类的字段名
-                    if(sInt.name().length() < 1){
+                    if(sInt.name().isEmpty()){
                         columnName = field.getName().toUpperCase();
                     } else {
                         columnName = sInt.name();
@@ -78,7 +78,7 @@ public class TableCreator {
                     String columnName = "";
                     SQLString sStr = (SQLString) ann[0];
                     // 如果注解没有指定表的字段名，就使用类的字段名
-                    if(sStr.name().length() < 1){
+                    if(sStr.name().isEmpty()){
                         columnName = field.getName().toUpperCase();
                     } else {
                         columnName = sStr.name();

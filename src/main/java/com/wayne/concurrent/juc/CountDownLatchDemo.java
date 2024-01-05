@@ -23,7 +23,7 @@ public class CountDownLatchDemo {
             count.await();
             log.info("班长锁门了");
         } catch (InterruptedException e) {
-            log.info("{}", e.getMessage(), e);
+            log.error("{}", e.getMessage(), e);
         }
     }
 }
